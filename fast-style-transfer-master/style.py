@@ -84,6 +84,9 @@ def build_parser():
                         dest='learning_rate',
                         help='learning rate (default %(default)s)',
                         metavar='LEARNING_RATE', default=LEARNING_RATE)
+    parser.add_argument('--device', type=str,
+                        dest='device',help='device to perform compute on',
+                        metavar='DEVICE', default=DEVICE)
 
     return parser
 
@@ -126,7 +129,8 @@ def main():
         "print_iterations":options.checkpoint_iterations,
         "batch_size":options.batch_size,
         "save_path":os.path.join(options.checkpoint_dir,'fns.ckpt'),
-        "learning_rate":options.learning_rate
+        "learning_rate":options.learning_rate,
+        "device":options.device
     }
 
     if options.slow:
