@@ -136,7 +136,7 @@ def optimize(content_targets, style_target, content_weight, style_weight,
                        _preds = vgg.unprocess(_preds)
                     else:
                        saver = tf.train.Saver()
-                       save_path ='saver/%s_%s.ckpt' % (epoch,iterations)
+                       save_path ='checkpoints/%s_%s.ckpt' % (epoch,iterations)
                        res = saver.save(sess, save_path)
                     yield(_preds, losses, iterations, epoch)
 
