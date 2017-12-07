@@ -86,7 +86,8 @@ def build_parser():
                         metavar='LEARNING_RATE', default=LEARNING_RATE)
     parser.add_argument('--device', type=str,
                         dest='device',help='device to perform compute on',
-                        metavar='DEVICE', default=DEVICE)
+                        metavar='DEVICE', default=DEVICE),
+
 
     return parser
 
