@@ -157,7 +157,8 @@ def ffwd(data_in, paths_out, checkpoint_dir, my_checkpoint, device_t='/gpu:0', b
         else:
             if my_checkpoint == 'True':
                 saver = tf.train.import_meta_graph(checkpoint_dir)
-                saver.restore(sess,tf.train.latest_checkpoint('checkpoint'))
+                checkpoint = checkpoint_dir[:-5]
+                saver.restore(sess,checkpoint)
             else:
                 saver.restore(sess, checkpoint_dir)
 
@@ -216,6 +217,7 @@ def build_parser():
     parser.add_argument('--in-path', type=str,
                         dest='in_path',help='dir or file to transform',
                         metavar='IN_PATH', required=True)
+
     parser.add_argument('--my-checkpoint',type=str,
                         dest='my_checkpoint',help='True or False',
                         metavar='MY_CHECKPOINT',default=MY_CHECKPOINT)
